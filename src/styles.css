@@ -1,0 +1,53 @@
+.Counter .button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.4em;
+  font-weight: bold;
+  color: royalblue;
+  border: 1px royalblue dashed;
+  border-radius: 0.2em;
+  background: whitesmoke;
+
+  margin:0.2em;
+}
+
+.Counter .button:hover {
+  background: #cad3ef;
+}
+
+.Counter .panel {
+  display: inline-block;
+  padding: 0.4em;
+  font-weight: bold;
+  border: 1px white dashed;
+  border-radius: 0.2em;
+  background: white;
+  margin:0.2em;
+}
+
+.Counter .number {
+  display: inline-block;
+  padding: 0.4em;
+  font-weight: bold;
+  border: 1px white dashed;
+  border-radius: 0.2em;
+  background: white;
+  margin:0.2em;
+}
+.Counter .title {
+  padding: 0.4em;
+  font-weight: bold;
+  border-radius: 0.2em;
+  font-size: 2em;
+  margin:0.2em;
+}
+
+.Counter .description {
+  margin: 0.4em;
+}
+.Counter  {
+  background: #e5e5e5;
+  padding: 1em;
+  margin: 1em;
+
+}
