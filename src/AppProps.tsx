@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './App.css';
+import './AppProps.css';
 
 let appRenderCounter = 0;
-export default function App(props) {
+export default function AppProps() {
   appRenderCounter++;
   const [incr, setIncr] = useState({ counter: 0 });
 
   return (
     <div>
-      <div>{'App renderCounter: ' + appRenderCounter}</div>
+      <div>{'AppProps renderCounter: ' + appRenderCounter}</div>
       <div>{'incr: ' + incr.counter}</div>
       <div>
         <button onClick={() => setIncr(incr)}>A) incr (parent)</button>
@@ -31,7 +31,9 @@ export default function App(props) {
 
 let renderCounter = 0;
 const clientActions = new Set();
-function Child({ action }) {
+type ChildProps = { name: string; action: any };
+
+function Child({ name, action }: ChildProps) {
   renderCounter++;
   clientActions.add(action);
 

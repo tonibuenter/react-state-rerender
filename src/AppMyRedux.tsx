@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-
+type Listener = Record<string, Set<any>>;
 const rx = (() => {
-  const listeners = {};
-  const payloads = {};
+  const listeners: Listener = {};
+  const payloads: Record<string, any> = {};
 
   // for statistics...
   const all = new Set();
@@ -20,12 +20,12 @@ const rx = (() => {
     init
   };
 
-  function init(topic) {
+  function init(topic: string) {
     initCounter++;
     return payloads[topic];
   }
 
-  function register(topic, listener) {
+  function register(topic: string, listener: any) {
     registerCounter++;
     let l = (listeners[topic] = listeners[topic] || new Set());
     l.add(listener);
@@ -33,13 +33,13 @@ const rx = (() => {
     return () => deregister(topic, listener);
   }
 
-  function deregister(topic, listener) {
+  function deregister(topic: string, listener: Listener) {
     deregisterCounter++;
     all.delete(listener);
     let a = listeners[topic] ? listeners[topic].delete(listener) : '';
   }
 
-  function publish(topic, payload) {
+  function publish(topic: string, payload: any) {
     payloads[topic] = payload;
     if (listeners[topic]) {
       listeners[topic].forEach((listener, index) => {
@@ -53,7 +53,7 @@ const rx = (() => {
   }
 })();
 
-function App() {
+export function AppMyRedux() {
   console.log('render APP');
 
   const [c, setC] = useState();
@@ -77,7 +77,7 @@ function App() {
   );
 }
 
-function Child({ name }) {
+function Child({ name }: { name: string }) {
   console.log('render Child ' + name);
 
   const [c, setC] = useState(rx.init('counter'));
@@ -102,4 +102,4 @@ function Child({ name }) {
   );
 }
 
-export default App;
+export default AppMyRedux;

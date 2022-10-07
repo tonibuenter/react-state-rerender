@@ -4,7 +4,7 @@ import './App.css';
 const type = 'State1';
 
 let appRenderCounter = 0;
-export default function App(props) {
+export default function AppState() {
   appRenderCounter++;
   const [incr, setIncr] = useState(0);
 
@@ -21,7 +21,7 @@ export default function App(props) {
     case 'State1':
       return (
         <div>
-          <div>{'App renderCounter: ' + appRenderCounter}</div>
+          <div>{'AppState renderCounter: ' + appRenderCounter}</div>
           <hr />
           <State1 key={appRenderCounter} name={'State1'} />
         </div>
@@ -30,20 +30,21 @@ export default function App(props) {
 }
 
 let renderCounter = 0;
-function State1(props) {
+
+function State1({ name }: { name: string }) {
   renderCounter++;
   const [isOnline, setIsOnline] = useState(null);
 
-  function handleStatusChange(status) {
+  function handleStatusChange(status: any) {
     setIsOnline(status.isOnline);
   }
 
   useEffect(() => {
-    console.log(props.name, 'subscribe');
+    console.log(name, 'subscribe');
     let id = setTimeout(() => handleStatusChange({ isOnline: true }), 2000);
     return () => {
       window.clearInterval(id);
-      window.console.log(props.name, 'unsubscribe');
+      window.console.log(name, 'unsubscribe');
     };
   });
 
